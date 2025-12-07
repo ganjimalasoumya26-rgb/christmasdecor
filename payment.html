@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Payment · Christmas Decor Deals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    body{
+      background:radial-gradient(circle at top,#0f172a 0,#020617 45%,#111827 100%);
+      color:#f9fafb;min-height:100vh;display:flex;flex-direction:column;align-items:center;
+      justify-content:flex-start;padding:1.5rem .75rem;position:relative;overflow-x:hidden;
+    }
+    body::before{
+      content:"";position:fixed;inset:0;pointer-events:none;
+      background-image:radial-gradient(#ffffffc0 1px,transparent 1px),radial-gradient(#ffffff80 1px,transparent 1px);
+      background-size:20px 20px,30px 30px;background-position:0 0,10px -10px;
+      animation:snow 20s linear infinite;opacity:.6;z-index:0;
+    }
+    @keyframes snow{0%{transform:translateY(0)}100%{transform:translateY(300px)}}
+    .shell{position:relative;z-index:1;width:100%;max-width:480px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;
+    }
+    .logo{display:flex;align-items:center;gap:.4rem;font-weight:800;font-size:1.1rem}
+    .logo span{font-size:1.6rem}
+    a.back{
+      font-size:.85rem;color:#e5e7eb;text-decoration:none;border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);padding:.3rem .7rem;display:inline-flex;
+      align-items:center;gap:.25rem;
+    }
+    a.back:hover{background:rgba(15,23,42,.8)}
+    .card{
+      background:rgba(15,23,42,.95);border-radius:1.1rem;padding:1.1rem .95rem;
+      box-shadow:0 14px 34px rgba(15,23,42,.9);border:1px solid rgba(148,163,184,.7);
+    }
+    h1{font-size:1.35rem;margin-bottom:.4rem;font-weight:800}
+    p.subtitle{font-size:.9rem;color:#e5e7eb;margin-bottom:.8rem}
+    .summary{
+      background:rgba(30,64,175,.5);border-radius:.8rem;padding:.6rem .7rem;
+      font-size:.8rem;margin-bottom:.9rem;border:1px solid rgba(129,140,248,.9);
+    }
+    .summary strong{color:#facc15}
+    form{display:flex;flex-direction:column;gap:.6rem;font-size:.9rem}
+    label{font-weight:500;margin-bottom:.15rem}
+    input,textarea,select{
+      width:100%;padding:.5rem .6rem;border-radius:.6rem;border:1px solid #64748b;
+      font-size:.9rem;background:#020617;color:#f9fafb;
+    }
+    textarea{min-height:70px;resize:vertical}
+    .inline{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.5rem}
+    .small-text{font-size:.8rem;color:#9ca3af}
+    .btn{
+      margin-top:.6rem;border:none;padding:.65rem 1.1rem;border-radius:999px;
+      font-size:.95rem;cursor:pointer;font-weight:600;display:inline-flex;
+      align-items:center;gap:.35rem;background:linear-gradient(135deg,#22c55e,#facc15);
+      color:#111827;box-shadow:0 12px 30px rgba(248,250,252,.2);width:100%;justify-content:center;
+    }
+    .btn:hover{filter:brightness(1.06)}
+    footer{
+      margin-top:1.2rem;font-size:.78rem;color:#9ca3af;text-align:center;position:relative;z-index:1;
+    }
+    footer span{display:block;margin-top:.25rem}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="logo">
+        <span>🎄</span> Christmas Decor Deals
+      </div>
+      <a href="index.html#cart" class="back">← Back to cart</a>
+    </header>
+
+    <div class="card">
+      <h1>Secure Payment (Demo)</h1>
+      <p class="subtitle">
+        Complete your payment to confirm your Christmas decor order.
+      </p>
+
+      <div class="summary">
+        <strong>Note:</strong> This is a demo payment page.  
+        In a real website, your exact cart total would appear here and a real payment gateway would be used.
+      </div>
+
+      <form id="pay-form">
+        <label for="name">Name on card / account</label>
+        <input id="name" type="text" required placeholder="E.g. G Soumya" />
+
+        <label for="email">Email for receipt</label>
+        <input id="email" type="email" required placeholder="you@example.com" />
+
+        <div class="inline">
+          <div>
+            <label for="method">Payment method</label>
+            <select id="method" required>
+              <option value="card">Credit / Debit Card</option>
+              <option value="upi">UPI</option>
+              <option value="netbanking">NetBanking</option>
+            </select>
+          </div>
+          <div>
+            <label for="amount">Amount (demo)</label>
+            <input id="amount" type="text" placeholder="e.g. ₹2,499" />
+          </div>
+        </div>
+
+        <label for="note">Order note (optional)</label>
+        <textarea id="note" placeholder="Any small note for packing, greeting, etc."></textarea>
+
+        <p class="small-text">
+          By clicking “Complete payment”, no real money will be taken. You will be redirected back to the
+          <strong>Thank You</strong> page on our main site (index.html).
+        </p>
+
+        <button type="submit" class="btn">
+          Complete payment (demo) ✅
+        </button>
+      </form>
+    </div>
+
+    <footer>
+      “Glory to God in the highest, and on earth peace, good will toward men.” – Luke 2:14
+      <span>Demo payment page · For practice / portfolio only</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("pay-form").addEventListener("submit",function(e){
+      e.preventDefault();
+      // Simulate successful payment and go back to Thank You section on index.html
+      window.location.href = "index.html#thankyou";
+    });
+  </script>
+</body>
+</html>
